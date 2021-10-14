@@ -33,7 +33,7 @@ int main()
 
   cout << "\n" << "Bienvenido a su calculador de valorización" << "\n" << "Ingrese la direccion de su predio" << "\n"; 
   string direccion;
-  cin >> direccion;
+  std::getline(cin, direccion);
 
   while (cin.fail() || (valorizacion[2] != 1 && valorizacion[2] != 2))
   {         
@@ -74,7 +74,7 @@ int main()
 
   if (valorizacion[2]==1)
   {
-    cout << "\n" << "La dimension de su predio (en m^2) es: " << valorizacion[1];
+    cout << "\n" << "La dimension de su predio es: " << valorizacion[1] << " m^2";
   }
   else{
     cout << "\n" << "Los ingresos reportados de su predio son: " << valorizacion[1];
