@@ -1,0 +1,8 @@
+1) Para crear el ejecutable: 
+
+g++ nombrearchivo.cpp -o nombreejecutable
+
+
+2) Para ejecutarlo:
+
+./nombreejecutable
