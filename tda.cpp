@@ -98,11 +98,11 @@ int main() {
   cout << "\n"<< "Con un valor base de: " << user.valorVivienda;  
 
   if(diferencia<0) {
-    cout << "\n"<< "El valor se ha reducido en " << diferencia*-1 << "pesos";     
+    cout << "\n"<< "El valor se ha reducido en " << diferencia*-1 << " pesos";     
   }
   else {
-    cout << "\n"<< "El valor se ha aumentado en " << diferencia << "pesos"; 
+    cout << "\n"<< "El valor se ha aumentado en " << diferencia << " pesos"; 
   }
 
-  cout << "\n"<< "Y por lo tanto su nuevo valor es de: " << valorizacion;  
+  cout << "\n"<< "Y por lo tanto su nuevo valor es de: " << valorizacion << "\n";  
 }
