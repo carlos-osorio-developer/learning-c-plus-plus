@@ -8,19 +8,11 @@ struct cliente {
   int valorVivienda;
 };
 
-int calculadora(int valorPredio, int tipoVivienda) {
-
-  int criterio;
+int calculadora(int valorPredio, int tipoVivienda, int criterio) {
+  
   int valorNuevo;
 
-  if(tipoVivienda==1) {
-    cout << "\n" << "Ya que su predio se encuentra en obra negra, ingrese su dimension en metros cuadrados: "; 
-    while (!(cin >> criterio)){   
-      cout << "\n" << "Error => Ingrese unicamente numeros: "; 
-      cin.clear();
-      cin.ignore(123, '\n');    
-    }
-    
+  if(tipoVivienda==1) {    
     if(criterio<60) {
       valorNuevo = valorPredio*0.9;
     }
@@ -29,13 +21,6 @@ int calculadora(int valorPredio, int tipoVivienda) {
     }
   }
   else {
-    cout << "\n" << "Ya que su predio tiene acabados, ingrese el nivel de estrato: "; 
-    while (!(cin >> criterio)){   
-      cout << "\n" << "Error => Ingrese unicamente numeros: "; 
-      cin.clear();
-      cin.ignore(123, '\n');    
-    }
-
     if(criterio>4) {
       valorNuevo = valorPredio*1.2;
     }
@@ -70,12 +55,54 @@ int main() {
   
   while (cin.fail() || (user.tipoVivienda != 1 && user.tipoVivienda != 2))
   {                 
-    cout << "\n" << "Finalmente, ingrese 1 si su vivienda se encuentra en obra negra, o ingrese 2 si ya tiene acabados" << "\n";
+    cout << "\n" << "Ahora, ingrese 1 si su vivienda se encuentra en obra negra, o ingrese 2 si ya tiene acabados" << "\n";
     cin >> user.tipoVivienda;   
     cin.clear();
     cin.ignore(123, '\n');           
   }
 
+  int criterioVivienda;
+  if(user.tipoVivienda==1) {
+    cout << "\n" << "Ya que su predio se encuentra en obra negra, ingrese su dimension en metros cuadrados: "; 
+    while (!(cin >> criterioVivienda)){   
+      cout << "\n" << "Error => Ingrese unicamente numeros: "; 
+      cin.clear();
+      cin.ignore(123, '\n');    
+    }        
+  }
+  else {
+    cout << "\n" << "Ya que su predio tiene acabados, ingrese el nivel de estrato: "; 
+    while (!(cin >> criterioVivienda)){   
+      cout << "\n" << "Error => Ingrese unicamente numeros: "; 
+      cin.clear();
+      cin.ignore(123, '\n');    
+    }    
+  }  
+
+  int diferencia;
   int valorizacion;
-  valorizacion = calculadora(user.valorVivienda, user.tipoVivienda);
+  
+  valorizacion = calculadora(user.valorVivienda, user.tipoVivienda, criterioVivienda);
+  diferencia = valorizacion - user.valorVivienda;
+
+  cout << "\n"<< "El cliente " << user.nombre << ", con CC: " << user.cedula <<".";  
+  
+  cout << "\n"<< "Posee una vivienda ";  
+  if(user.tipoVivienda==1) {
+    cout << "en obra negra, de dimension: " << criterioVivienda << " metros cuadrados.";
+  }
+  else {
+    cout << "con acabados, de estrato " << criterioVivienda;
+  }
+
+  cout << "\n"<< "Con un valor base de: " << user.valorVivienda;  
+
+  if(diferencia<0) {
+    cout << "\n"<< "El valor se ha reducido en " << diferencia*-1 << "pesos";     
+  }
+  else {
+    cout << "\n"<< "El valor se ha aumentado en " << diferencia << "pesos"; 
+  }
+
+  cout << "\n"<< "Y por lo tanto su nuevo valor es de: " << valorizacion;  
 }
