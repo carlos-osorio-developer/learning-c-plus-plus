@@ -38,7 +38,7 @@ int main() {
   cout << "\n" << "Bienvenido a su calculadora inmobiliaria" << "\n" << "Por favor ingrese el nombre del usuario: ";  
   std::getline(cin, user.nombre);
 
-  cout << "\n" << "A continuación, ingrese la cédula del usuario: "; 
+  cout << "\n" << "A continuación, ingrese la cedula del usuario: "; 
   while (!(cin >> user.cedula)){   
     cout << "\n" << "Error => Ingrese unicamente numeros: "; 
     cin.clear();
