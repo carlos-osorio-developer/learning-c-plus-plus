@@ -5,7 +5,7 @@
 // Para el desarrollo tenga en cuenta lo siguiente:
 // Si el tipo de actor es no reconocido y la duración de la película es de 2 horas, 
 // el valor a pagar por la compra se aumenta en un 10% del valor de la película.
-// Si el tipo de actor es no reconocido y la duración de la película es de 3 horas, 
+// Si el tipo de actor es reconocido y la duración de la película es de 3 horas, 
 // el valor a pagar por la compra se aumenta en un 20% del valor de la película.
 // Nota: Cualquier otra combinación no es válida (mostrar mensaje)
 // 1. Se debe mostrar por pantalla un informe con: Los datos de la película:
@@ -27,7 +27,7 @@ class Pelicula{
 
   public:
   //Constructor
-    Pelicula(string nombre="", string tipoActor="", int duracion=0, int valor=0){ 
+    Pelicula(string nombre, string tipoActor, int duracion, int valor){ 
       this->nombre = nombre;
       this->tipoActor = tipoActor;
       this->duracion = duracion;
@@ -114,8 +114,7 @@ void Pelicula::calcValorRecargo(){
   }
 };
 
-int main(){
-  Pelicula pelicula;
+int main(){  
   string nombre;
   string tipoActor;
   int duracion;
@@ -124,8 +123,7 @@ int main(){
   int porcentaje;
 
   cout << "Ingrese el nombre de la pelicula: ";
-  cin >> nombre;
-  pelicula.setNombre(nombre);
+  std::getline(cin, nombre); 
   
   cout << "Ingrese el tipo de actor (R para reconocido, NR para no-reconocido): ";  
   //Validacion de tipo de actor
@@ -137,7 +135,6 @@ int main(){
       cout << "No se admiten otras combinaciones además de R o NR: ";
     }
   }  
-  pelicula.setTipoActor(tipoActor);
 
   //Validacion de duracion
   cout << "Ingrese la duracion de la pelicula: ";
@@ -149,12 +146,11 @@ int main(){
       cout << "No se admiten otras combinaciones además de 2 o 3: ";
     }    
   }  
-  pelicula.setDuracion(duracion);
 
   cout << "Ingrese el valor de la pelicula: ";
-  cin >> valor;
-  pelicula.setValor(valor);
+  cin >> valor;  
   
+  Pelicula pelicula(nombre, tipoActor, duracion, valor);
   pelicula.calcValorRecargo(); //Calcula el valor del recargo
 
   cout << "Nombre: " << pelicula.getNombre() << endl;
