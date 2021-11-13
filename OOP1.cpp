@@ -111,6 +111,7 @@ void Pelicula::calcValorRecargo(){
     this->valorRecargo = 0;
     this->porcentaje = 0;
     this->valorTotal = this->getValor();
+    cout << "No es una combinacion valida" << endl;
   }
 };
 
@@ -137,7 +138,7 @@ int main(){
   }  
 
   //Validacion de duracion
-  cout << "Ingrese la duracion de la pelicula: ";
+  cout << "Ingrese la duracion de la pelicula en horas (2 o 3): ";
   while (cin.fail() || (duracion != 2 && duracion != 3)){
     cin >> duracion;
     cin.clear();
