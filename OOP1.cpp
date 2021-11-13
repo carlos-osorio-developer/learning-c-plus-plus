@@ -1,3 +1,17 @@
+// Utilizando los conceptos de Programación Orientada a Objetos (Constructores-Métodos) 
+// realizar un programa en C++ que permita ingresar por teclado el nombre de la película, 
+// tipo de actor (reconocido – no reconocido), 
+// la duración de la película (2 – 3 Horas) y el valor de la película.
+// Para el desarrollo tenga en cuenta lo siguiente:
+// Si el tipo de actor es no reconocido y la duración de la película es de 2 horas, 
+// el valor a pagar por la compra se aumenta en un 10% del valor de la película.
+// Si el tipo de actor es no reconocido y la duración de la película es de 3 horas, 
+// el valor a pagar por la compra se aumenta en un 20% del valor de la película.
+// Nota: Cualquier otra combinación no es válida (mostrar mensaje)
+// 1. Se debe mostrar por pantalla un informe con: Los datos de la película:
+// nombre, tipo de actor, duración, valor de la película, valor a pagar por el recargo, 
+// porcentaje y el valor total a pagar por la película.
+
 #include<iostream>
 using namespace std;
 
