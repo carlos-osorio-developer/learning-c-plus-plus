@@ -3,21 +3,25 @@
 #include<iostream>
 using namespace std;
 
+//Clase padre
 class Persona{
   private:
     int id;
     string nombre;    
   public:
+  //Constructor
     Persona(int id=0, string nombre="NN"){
       this->id = id;
       this->nombre = nombre;
     };
+    //Setters
     void setId(int id){
       this->id = id;
     };
     void setNombre(string nombre){
       this->nombre = nombre;
     };
+    //Getters
     int getId(){
       return this->id;
     };
@@ -26,31 +30,39 @@ class Persona{
     };
 };
 
+//Clase hija (hereda de Persona)
 class Alumno: public Persona{
   private:
     string programa;
   public:
+  //Constructor (se llama al constructor de la clase padre -Persona-)
     Alumno(int id=0, string nombre="NN", string programa="NN"):Persona(id, nombre){
       this->programa = programa;
     };
+    //setters
     void setPrograma(string programa){
       this->programa = programa;
     };
+    //getters
     string getPrograma(){
       return this->programa;
     };
 };
 
+//Clase hija (hereda de Persona)
 class Docente: public Persona{
   private:
     string profesion;
   public:
+  //Constructor (se llama al constructor de la clase padre -Persona-)
     Docente(int id=0, string nombre="NN", string profesion="NN"):Persona(id, nombre){
       this->profesion = profesion;
     };
+    //Setters
     void setProfesion(string profesion){
       this->profesion = profesion;
     };
+    //Getters
     string getProfesion(){
       return this->profesion;
     };
