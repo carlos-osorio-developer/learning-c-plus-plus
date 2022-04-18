@@ -50,109 +50,116 @@ using namespace std;
 
 
 int F4(int v1, int v5){
-  int suma = 0;
-  suma = (v1 + v5) * 20;
+  int operacion = 0; // Variable para almacenar el resultado de la operacion
+  operacion = (v1 + v5) * 20; // suma los valores de los parámetros y lo multiplica por 20
 
-  cout << "(" << v1 << " + " << v5 << ") * 20 = " << suma << endl;
-
-  return suma;
+  return operacion;
 }
 
 
 int F3(int resto){
   
-  int numero = resto;
-  int cubo = 0;
-  int cuadrado = 0;
+  int numero = resto; // parámetro para la operación
+  int cubo = 0; // resultado del cubo del número
+  int cuadrado = 0; // resultado del cuadrado del número
 
   cout << "El valor para F3() es: " << numero << ", resultado: " << endl;
-  if (numero % 2 == 0){
+  if (numero % 2 == 0){ // si el número es par, calcula el cuadrado del número
     cuadrado = numero * numero;
     cout << "El cuadrado de " << numero << " es: " << cuadrado << endl;
   }
-  else{
+  else{ // si el número es impar, calcula el cubo del número
     cubo = numero * numero * numero;
     cout << "El cubo de " << numero << " es: " << cubo << endl;
-  }
-  
-  return 0;  
+  }  
 }
 
 
 int F2(int acumulador){
-  int v2[5];
-  int i;
-
-  for(i = 0; i < 5; i++){
-    if(i == 0){
-      v2[i] = acumulador + 10;
-    }else if(i == 1){
-      v2[i] = acumulador + 20;
-    }else if(i == 2){
-      v2[i] = acumulador + 30;
-    }else if(i == 3){
-      v2[i] = acumulador + 40;
-    }else if(i == 4){
-      v2[i] = acumulador + 50;
-    }
-  }
+  int v2[5]; // Vector de 5 elementos
+  int i; // Indice para recorrer el vector
+  int operacion = 0; // Variable para almacenar el resultado de la operacion
 
   cout << "Vector de F2: " << endl;
   for(i = 0; i < 5; i++){
-    cout << v2[i] << " ";
+    if(i == 0){ // Primer elemento, será el valor del parámetro (acumulador) más 10
+      v2[i] = acumulador + 10;
+    }else if(i == 1){ // Segundo elemento, será el valor del parámetro (acumulador) más 20
+      v2[i] = acumulador + 20;
+    }else if(i == 2){ // Tercer elemento, será el valor del parámetro (acumulador) más 30
+      v2[i] = acumulador + 30;
+    }else if(i == 3){ // Cuarto elemento, será el valor del parámetro (acumulador) más 40
+      v2[i] = acumulador + 40;
+    }else if(i == 4){ // Quinto elemento, será el valor del parámetro (acumulador) más 50
+      v2[i] = acumulador + 50;
+    }
+    cout << v2[i] << " "; // Imprime el valor del elemento
   }
   cout << endl;
 
   // muestra el primer y último valor del vector
-  cout << "Los valores para F4() son " << v2[0] << " y  " << v2[4] << endl;
+  cout << "Los valores para F4() son " << v2[0] << " y " << v2[4] << endl;
 
-  return F4(v2[0], v2[4]);
+     = F4(v2[0], v2[4]); // llama a la función F4() y le pasa los valores máximo y mínimo del vector v2
+
+  cout << "(" << v2[0] << " + " << v2[4] << ") * 20 = " << operacion << endl;
 }
 
 
 int F1(){
-  int v1[5];
-  int i;
-  int mayor = 0;
-  int menor = 20;
-  int acumulador = 0;
-  int suma = 0;
-  int resto = 0;
-
-  srand((unsigned int)time(NULL));
-  for(i = 0; i < 5; i++){
-    v1[i] = rand() % 16;
-  }
+  int v1[5]; // vector de 5 elementos
+  int i; // indice para recorrer el vector
+  int count; // contador para recorrer el vector
+  int mayor = 0; // valor mayor del vector
+  int menor = 20; // valor menor del vector
+  int acumulador = 0; // acumulador para tener la suma de todo el vector
+  int suma = 0; // suma del mayor y menor valor del vector
+  int resto = 0; // suma del resto de valores del vector
 
   cout << "Vector inicial: " << endl;
-  for(i = 0; i < 5; i++){
-    cout << v1[i] << " ";
-    suma = suma + v1[i];
-  }
+  srand((unsigned int)time(NULL)); // crea una nueva semilla para que no se repitan los números aleatorios en cada ejecución
+  int index = 0; // indice para el vector v1
+  int num_temp; // variable temporal para guardar los números aleatorios
+  for(count = 0; count < 5; count++){ // ciclo que creará 5 números
+    do{ // lineas de ejecución del while
+			// crea un número aleatorio entre 5 y 15, usando el residuo de dividir entre 11 (máximo regresa un 10), y al residuo le suma 5
+      num_temp = (rand() % 11) + 5;
+			for(i = 0; i < 5; i++ ){ // recorre lo que hay en el vector hasta ahora
+				if( num_temp == v1[i] ){ // si el número aleatorio ya está en el vector
+					num_temp = -1; // lo vuelve cero
+					break; // rompe el ciclo
+				}
+			}
+		}while( num_temp == -1 ); // mientras el número aleatorio sea -1, se repite el ciclo
+            v1[index] = num_temp; // si deja de repetir el ciclo, guarda el número aleatorio en el vector
+            cout << v1[index] << " "; // imprime el número aleatorio
+            index++; // incrementa el indice del vector, para guardar el siguiente número
+            acumulador += num_temp; // suma el número aleatorio al acumulador
+  };
   cout << endl;
 
-  for(i = 0; i < 5; i++){
-    if(v1[i] > mayor){
-      mayor = v1[i];
+  for(i = 0; i < 5; i++){ // recorre el vector
+    if(v1[i] > mayor){ 
+      mayor = v1[i]; // si el valor analizado es mayor que el máximo hasta el momento, lo reescribe
     }
   }
 
   for(i = 0; i < 5; i++){
     if(v1[i] < menor){
-      menor = v1[i];
+      menor = v1[i]; // si el valor analizado es menor que el mínimo hasta el momento, lo reescribe
     }
   }
 
-  acumulador = mayor + menor;
-  resto = suma-acumulador;
+  suma = mayor + menor; // suma el mayor y menor valor del vector
+  resto = acumulador-suma; // obtiene la suma de los demás, restando lo anterior a la suma total del vector
   
-  cout << "El mayor es: " << mayor << ", el menor es: " << menor << ", y la suma de ambos es: " << acumulador << endl;
+  cout << "El mayor es: " << mayor << ", el menor es: " << menor << ", y la suma de ambos es: " << suma << endl;
 
   cout << "La suma del resto es: " << resto  << endl;
   cout << endl;
-  F2(acumulador);
+  F2(suma); // llama a la función F2, pasando como parámetro la suma de los valores máximo y mínimo del vector
   cout << endl;
-  return F3(resto);
+  F3(resto);  // llama a la función F3, pasando como parámetro la suma de los valores restantes del vector
 
 }
 
